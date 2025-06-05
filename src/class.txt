@@ -1,0 +1,33 @@
+use command ---- npm run build ---- to get html, css, js files
+
+
+react js syntax ----- .jsx 
+
+
+jsx -- js extension
+
+
+syntax : 
+
+
+function App() {
+
+
+js ---- things like const a = 5 
+
+
+return (
+
+ html
+
+)
+
+}
+
+
+-------------
+
+in react js --- when we are implementing js in return should use {}
+
+
+
