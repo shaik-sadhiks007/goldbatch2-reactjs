@@ -1,124 +1,49 @@
-import Todo from './Todo.jsx'
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Counter from "./Counter";
+import Todo from "./Todo";
+import Home from './Home'
+import './style.css'
+
 
 function App() {
-
-  // js --- to be implemented before return
-
-
-  // useState ---- function (hooks) which is used to update the html
-
-
-  // syntax ----
-
-  // instead of creating variables like
-
-  // let sadhik = 5;  --- creating
-
-  // sadhik = 7 --- updating
-
-
-
-
-  const [sadhik, setSadhik] = useState(20);
-
-  // let sadhik1 = 202
-
-  // sadhik1 = 1
-
-  /// [variablename, functionname] = useState(initialvalue)
-
-
-  const name = "sadhik";
-
-
-  let count = 0;
-
-
-  console.log(count, 'count')
-
-  function increment() {
-
-
-    // count++
-
-    count = count + 1
-
-    console.log(count, "count in fun")
-
-  }
-
-  function sadhikincrement() {
-
-
-    // count = count+ 1
-
-    setSadhik(sadhik + 1)
-
-  }
-
-
-  function sadhikdecrement() {
-
-
-    // count = count+ 1
-
-    setSadhik(sadhik - 1)
-
-  }
-
-  function sadhikreset() {
-
-    setSadhik(0)
-
-  }
 
 
   return (
 
     <div>
 
-      {/* html */}
+      {/* <h1>Counter application</h1>
 
-      <div>
-
-        username is {name}
+      <Counter />
 
 
-      </div>
-
-      <h1>Count : {count}</h1>
+      <Todo/> */}
 
 
-
-      {/* // don't give function call */}
-
-      {/* 1.method --- don't use the parenthesis */}
-
-      <button onClick={increment}>increment</button>
+      {/* // for navigation download the react-router-dom */}
 
 
-      <h1>count of sadhik : {sadhik} </h1>
+      {/* node-modules --- folders we installed */}
 
-      <button onClick={sadhikincrement}>increment</button>
-
-      <button onClick={sadhikdecrement}>decrement</button>
-
-      <button onClick={sadhikreset}>reset</button>
+      {/* package.json --- which has the history and version of download packages */}
 
 
+      {/* to implement the page navigation we have to react router dom */}
 
 
+      <BrowserRouter>
 
-      {/* // 2.method ---- callback function */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/counter" element={<Counter />} />
+        </Routes>
 
 
-      {/* <button onClick={() => increment()}>increment</button> */}
+      </BrowserRouter>
 
 
 
-
-      {/* divtag.addeventlister('click', increment ) */}
 
 
 
