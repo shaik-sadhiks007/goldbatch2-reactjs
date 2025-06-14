@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { productscContext } from "./productsContext";
 
 function Counter() {
 
@@ -28,6 +29,15 @@ function Counter() {
         setSadhik(0)
 
     }
+
+
+    const {products} = useContext(productscContext);
+
+    console.log(products,'products related to counter')
+
+
+
+
 
     return (
 

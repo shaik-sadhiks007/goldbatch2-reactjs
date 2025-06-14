@@ -1,0 +1,41 @@
+to use the context api
+
+1. create the context api in new file
+
+import { createContext } from "react";
+
+export const productscContext = createContext()
+
+
+2. use provider in the app.jsx
+
+simply the wrap the entire html in the context provider and send the data in the value variable
+
+<productscContext.Provider value={{products,setProducts}}>
+
+
+
+      <BrowserRouter>
+
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product-description/:id" element={<ProductDes />} />
+
+        </Routes>
+
+      </BrowserRouter>
+
+    </productscContext.Provider>
+
+
+3. to retrive the data in the child --- simply use this 
+
+    const {products,bhanu} = useContext(productscContext)
+
+
+
