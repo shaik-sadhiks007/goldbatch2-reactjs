@@ -35,7 +35,7 @@ simply the wrap the entire html in the context provider and send the data in the
 
 3. to retrive the data in the child --- simply use this 
 
-    const {products,bhanu} = useContext(productscContext)
+  const {products,bhanu} = useContext(productscContext)
 
 
 

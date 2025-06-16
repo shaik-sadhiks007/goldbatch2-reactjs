@@ -1,0 +1,106 @@
+overview of react js ---
+
+
+1. installation --- nodejs,  npm create vite@latest
+
+2. 
+
+concepts : 
+
+1. state (varables --- defining the variables) ---- usestate()
+
+2. useEffect ---- how many times we have to call the api's based on purpose
+
+3. react-router-dom (for creating the inpage navigation) 
+
+4. statemanagement ( how to send the data from one function to another function)
+
+	1. props (if relation is parent and child then only we have to use it )
+
+	2. context api (by creating the createContext() )
+
+5. installing bootstrap (import the css and js files in main.jsx);
+
+
+1. usestate --- to update the variable and html content also
+
+syntax
+    // const [variablename, updatefunname] = useState(initial value)
+
+2. useEffect()
+
+ useEffect(
+
+        // syntax
+
+        // call back fun (a fun calling another fun), dependency (on which it is depending)
+
+
+
+    )
+
+3. react-router-dom (for creating the inpage navigation) ---- like index page of the book;
+
+first less --- 10 th page
+
+second less --- 30th page
+
+
+
+on which route which component should show
+
+
+
+<BrowserRouter>
+
+          <Routes>
+            
+            <Route path="/" element={<Home />} />
+            <Route path="/todo" element={<Todo />} />
+            <Route path="/counter" element={<Counter />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product-description/:id" element={<ProductDes />} />
+
+          </Routes>
+
+        </BrowserRouter>
+
+4.1 --- props (sending data from one fun to another fun) (it should have parent and child relation)
+
+
+// parent
+function Overview() {
+
+ return (
+
+        // html
+        <div>
+          
+
+
+            <Login username={'sadhik'} />
+
+        </div>
+    )
+}
+
+
+// child --- retrieve data using the obj destructuring
+
+
+function Login({username}) {
+
+
+  return (
+    <div>
+      <input type="text" value={username} placeholder='enter the username' />
+
+    </div>
+  )
+}
+
+export default Login
+
+
+4.2) context api --- without parent and child relation we have to do the state management--- for this refer to context api notes
+

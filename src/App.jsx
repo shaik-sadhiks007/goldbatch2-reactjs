@@ -8,6 +8,7 @@ import Products from "./Products";
 import ProductDes from "./ProductDes";
 import { productscContext } from "./productsContext";
 import { useEffect, useState } from "react";
+import Overview from "./Overview";
 
 
 
@@ -18,6 +19,10 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
+  // let a = 5
+
+  // a = 3
+
   const [bhanu, setBhanu] = useState('hemanth');
 
 
@@ -25,22 +30,33 @@ function App() {
 
     const res = await fetch("https://fakestoreapi.com/products");
 
-    const data = await res.json();
+    const data = await res.json(); // to retrive data from the res
 
     setProducts(data);
 
   }
 
+
   useEffect(
 
+
     () => {
-
       fetchProducts()
+    }, []
 
-    },
-    []
 
   )
+
+  // useEffect(
+
+  //   () => {
+
+  //     fetchProducts()
+
+  //   },
+  //   [] // only one time that too on page load
+
+  // )
 
 
 
@@ -68,33 +84,36 @@ function App() {
 
 
 
+    <>
 
 
 
 
-
-    <productscContext.Provider value={{products,bhanu}}>
-
+     <productscContext.Provider value={{ products, bhanu }}>
 
 
-      <BrowserRouter>
 
-        <Header />
+        <BrowserRouter>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/todo" element={<Todo />} />
-          <Route path="/counter" element={<Counter />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product-description/:id" element={<ProductDes />} />
+          {/* <Header /> */}
 
-        </Routes>
+          <Routes>
 
-      </BrowserRouter>
+            <Route path="/" element={<Home />} />
+            <Route path="/todo" element={<Todo />} />
+            <Route path="/counter" element={<Counter />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product-description/:id" element={<ProductDes />} />
 
-    </productscContext.Provider>
+          </Routes>
 
+        </BrowserRouter>
 
+     </productscContext.Provider>
+
+      <Overview />
+
+    </>
 
 
 
