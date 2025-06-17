@@ -9,6 +9,7 @@ import ProductDes from "./ProductDes";
 import { productscContext } from "./productsContext";
 import { useEffect, useState } from "react";
 import Overview from "./Overview";
+import Register from "./Register";
 
 
 
@@ -89,7 +90,7 @@ function App() {
 
 
 
-     <productscContext.Provider value={{ products, bhanu }}>
+      <productscContext.Provider value={{ products, bhanu }}>
 
 
 
@@ -104,14 +105,17 @@ function App() {
             <Route path="/counter" element={<Counter />} />
             <Route path="/products" element={<Products />} />
             <Route path="/product-description/:id" element={<ProductDes />} />
+            <Route path="/register" element={<Register />} />
+
+
 
           </Routes>
 
         </BrowserRouter>
 
-     </productscContext.Provider>
+      </productscContext.Provider>
 
-      <Overview />
+      {/* <Overview /> */}
 
     </>
 
