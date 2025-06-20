@@ -29,8 +29,16 @@ function Register() {
         console.log(username,password,'credentials')
 
         const res = await fetch("http://localhost:5000/api/auth/register", {
+
+            // what is the method u r using
             method : 'POST',
+
+            // what is the content u r sending
             headers : {'Content-Type' : 'application/json'},
+
+            // what is the data
+
+            // json.stringify will convert the javascript obj to json 
             body : JSON.stringify(credentials)
         })
 

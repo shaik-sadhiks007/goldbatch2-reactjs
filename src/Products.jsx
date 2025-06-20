@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import ProductDes from './ProductDes';
 import { productscContext } from './productsContext';
 
@@ -7,9 +7,11 @@ function Products() {
 
     // const [products, setProducts] = useState([]);
 
-    const {products,bhanu} = useContext(productscContext)
+    const { products, bhanu } = useContext(productscContext)
 
-    console.log(products,bhanu,'products')
+    console.log(products, bhanu, 'products')
+
+    const navigate = useNavigate()
 
     const [sadhik, setSadhik] = useState(20);
 
@@ -20,6 +22,16 @@ function Products() {
         setSadhik(sadhik + 1)
 
     }
+
+    useEffect(
+        () => {
+            const token = localStorage.getItem("token")
+
+            if (token == null) {
+                navigate('/')
+            }
+        }
+    )
 
 
     // async function fetchProducts() {
@@ -61,9 +73,17 @@ function Products() {
     // breakpoints
 
 
+    function handleLogout() {
+        localStorage.removeItem("token")
+        navigate('/')
+    }
+
+
 
     return (
         <div>
+
+
             <h1>Products</h1>
 
             <h1>count of sadhik : {sadhik} </h1>
@@ -74,6 +94,11 @@ function Products() {
 
 
 
+            <div>
+                <button className='btn btn-danger' onClick={() => handleLogout()}>
+                    logout 
+                </button>
+            </div>
             <div className='container' >
 
                 <div className='row'>
@@ -103,9 +128,9 @@ function Products() {
                         ))
 
                     }
-                
 
-                
+
+
 
                 </div>
 

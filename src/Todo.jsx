@@ -1,57 +1,98 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import EachTodo from "./EachTodo";
 
 
 function Todo() {
 
-    const [todos, setTodos] = useState([
+    const [todos, setTodos] = useState([])
 
-        {
-            id: 1,
-            todos: "wake up in the morning"
-        },
-        {
-            id: 2,
-            todos: "do homework"
-        },
-
-    ])
-
-    function deleteTodo(index) {
-
-        console.log(index, "clicked button");
-
-        console.log(todos, 'todos')
-
-        const newTodo = todos.filter((ele,pos) => ele.id !== index )
+    const [title, setTitle] = useState('')
 
 
-        console.log(newTodo, "deletetodo")
+    const fetchTodos = async () => {
 
-        setTodos(newTodo);
+        const res = await fetch("http://localhost:5000/api/todo");
 
+        const data = await res.json()
+
+        console.log(data, 'data')
+
+        setTodos(data)
+
+    }
+
+    useEffect(
+        () => {
+            fetchTodos()
+        }, []
+    )
+
+    // function handleTitleUpdate(event) {
+
+    //     setTitle(event.target.value);
+
+    // }
+
+    // console.log(title,'title')
+
+
+    async function handleSubmit() {
+
+        console.log("hangle submit")
+
+        const res = await fetch("http://localhost:5000/api/todo",{
+            method : "POST",
+            headers : {'Content-Type' : "application/json"},
+            body : JSON.stringify(
+                {
+                    title : title
+                }
+            )
+        });
+
+        
+
+        const data = await res.json();
+
+        fetchTodos()
+
+        console.log(data,'data in post')
 
 
 
     }
+
+
 
     return (
 
         <>
             <h1 className="text-primary">this is Todo app</h1>
 
+            <input type="text" placeholder="enter the todo title"
+
+                onChange={(event) => setTitle(event.target.value)}
+
+            />
+
+            <button onClick={() => handleSubmit()}>submit</button>
+
             {
                 todos.map((ele, index) => (
+                    <div key={index}>
+                        {/* <input type="checkbox" /> */}
 
+                        {ele.title}
 
-                    // concept name is props ---- this is state management
+                        <div>
+                            <button>delete</button>
+                        </div>
 
-                    // when u use the props , u can able to send the from parent to child and child to parent
-
-                    <EachTodo hemanth={ele} key={index} deleteTodo={deleteTodo} />
-
+                    </div>
                 ))
             }
+
+
 
         </>
 
